@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.mind.model;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ public class Chat {
 
 	public Chat() {
 		super();
-		// TODO Auto-generated constructor stub
+		;
 	}
 
 	public List<Prompt> getChats() {
