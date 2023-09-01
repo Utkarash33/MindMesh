@@ -18,33 +18,25 @@ import com.mind.services.AnswerServices;
 @RestController
 @RequestMapping("/user")
 public class ChatController {
-	
 	private static AnswerServices services;
-	
-	
 	@Autowired
 	public ChatController(AnswerServices answerServices) {
 		super();
 		this.services = answerServices;
 	}
-
 	@PostMapping("/save")
 	public static void saveAnswer(@RequestBody Answers answer)
 	{
 		services.saveAnswer(answer);
 	}
-	
-	
 	@GetMapping("/getall")
 	public static ResponseEntity<List<Answers>> getAllAnswers()
 	{
 		return new ResponseEntity<>(services.getAnswersList(),HttpStatus.OK);
 	}
-	
 	@DeleteMapping("/empty")
 	public void removeAllAnswers()
 	{
 		services.clearDataBase();
 	}
-
 }
