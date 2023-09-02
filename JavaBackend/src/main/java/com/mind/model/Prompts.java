@@ -45,14 +45,16 @@ public class Prompts {
                         "\"second question\"\n" +
                         "\"third question\"\n" +
                         "and so on....";
-            case "FEEDBACK":
-                return "####give me feedback in this framework in no more than 50 words####:\r\n"
-                		+ "    DUBX: \r\n"
+            default:
+                return "####The the role of an interviwer and give me feedback by conparing the answer for the each question make the scoreing as hard as possible"
+                		+ "   no room for errors"
+                		+ "  framework in no more than 50 words####:\r\n"
+                		+ "   the framwork to compare answers with is DUBX: \r\n"
                 		+ "    D - Definition (it should include the key technical terms) \r\n"
                 		+ "    U - Use Cases \r\n"
                 		+ "    B - Benefits \r\n"
                 		+ "    X - Extra Information \r\n"
-                		+ "    #### An example to explain the concept \"Objects\" in javascript you would use it like this: \r\n"
+                		+ "    #### An example to explain the concept by using DUBX \"Objects\" in javascript: \r\n"
                 		+ "    Definition: Object is a data type that stores data in the form of key-value pairs. It also allows actions to be performed on this data using methods. \r\n"
                 		+ "    Use Cases: It is used whenever you have unordered data which has to be fetched using a property name. \r\n"
                 		+ "    Example use cases:\r\n"
@@ -67,10 +69,11 @@ public class Prompts {
                 		+ "    Feedback for Subject Matter Expertise and Communication skills should contain ratings on my interview responses from 0 - 10\r\n"
                 		+ "    ###\r\n"
                 		+ "    Formate of the review :-\r\n"
-                		+ "    feedbacks in the pointers\"\\n\"\r\n"
-                		+ "    subject matter 5/10\"\\n\"\r\n"
-                		+ "    communication skills 4/10\"\\n\"\r\n"
+                		+ "    feedbacks in the pointers for each question asleast one pointer\"\\n\"\r\n"
                 		+ "    ###\r\n"
+                		+ "    OverAll marks:- "
+                		+ "    subject matter 1/10\"\\n\"\r\n"
+                		+ "    communication skills 1/10\"\\n\"\r\n"
                 		+ "    the out must only contains these things nothing other then that one every the \"Thank you messge or the sure message\"`"; // Handle unknown roles or provide a default prompt
         }
     }

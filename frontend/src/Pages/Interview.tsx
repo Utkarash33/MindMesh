@@ -39,12 +39,12 @@ const Interview = () => {
             console.log(err)
         })
     }
-    const questionsArray: string[] = ques.split("\n");
-    // const questionsArray: string[] = question.split("\n");
+    // const questionsArray: string[] = ques.split("\n");
+    const questionsArray: string[] = question.split("\n");
 
-    // useState(()=>{
-    //     getQues()
-    // },[])
+    useState(()=>{
+        getQues()
+    },[])
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setState({ ...state, inputValue: e.target.value });
@@ -62,7 +62,7 @@ const Interview = () => {
         };
         if (state.questionIndex == questionsArray.length-1) {
             console.log("All questions and answers:", updatedFinalData); // Log updatedFinalData
-            axios.post("apiur",updatedFinalData)
+            axios.post("http://localhost:8080/mind/feedback/out",updatedFinalData)
             .then(res=>{
                 setFeedback(true)
                 setProvideFeedback(res.data)
@@ -106,7 +106,7 @@ const Interview = () => {
                         />
                         <button
                             className="bg-[#1baaf7] w-[50px] text-white rounded-md font-medium my-6 mx-auto py-3 hover:bg-[#28d5d2]"
-                            disabled={inputValue.length===0}
+                            disabled={inputValue.length<30}
                             onClick={handleSubmit}
                         >
                             Send
