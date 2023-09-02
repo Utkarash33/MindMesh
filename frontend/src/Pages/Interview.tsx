@@ -36,7 +36,6 @@ const Interview = () => {
 
     const feedbackarray  =provideFeedback.split("\n");
 
-  //Rest of your code remains the same
     if (!browserSupportsSpeechRecognition) {
     return null;
     }
@@ -48,7 +47,6 @@ const questionsArray: string[] = question.split("\n");
     }, []);
 
     useEffect(() => {
-    // Update isAnswerValid state when the input value changes
     setIsAnswerValid(
         state.inputValue.trim().length >= 30 ||
         (isListening && transcript.trim().length >= 30)
@@ -93,7 +91,7 @@ const questionsArray: string[] = question.split("\n");
     a.preventDefault();
     const currentQuestion = questionsArray[state.questionIndex];
     const currentAnswer = state.inputValue;
-    console.log(currentAnswer);
+    //console.log(currentAnswer);
     const updatedFinalData = {
         ...state.finalData,
         [currentQuestion]: currentAnswer,
