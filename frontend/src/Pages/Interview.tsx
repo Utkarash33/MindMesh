@@ -17,12 +17,6 @@ interface InterviewState {
   finalData: { [key: string]: string };
 }
 
-// const dummy: string =
-//     "Subject Matter Expertise: 2/10\nCommunication Skills: 3/10\nPointers to improve:\n- Focus on understanding the question clearly before providing an answer\n- Provide concise and clear responses without trying to be overly creative\n- Improve communication skills by speaking clearly and confidently";
-
-// const ques: string =
-//     "1. Can you explain the concept of object-oriented programming and how it is implemented in Java?\n2. How do you handle exceptions in Java? Can you provide an example of a situation where you would use checked and unchecked exceptions?\n3. Can you explain the difference between an abstract class and an interface in Java? When would you use each?\n4. How would you design a system for a large-scale e-commerce website using Java? What technologies and frameworks would you use?\n5. Can you explain the concept of multithreading in Java? How would you handle synchronization and concurrency issues?\n6. What are some best practices for writing clean and efficient code in Java? Can you provide an example of a code optimization you have implemented?";
-
 const Interview = () => {
     const { track } = useParams<Track>();
     const [state, setState] = useState<InterviewState>({
@@ -34,7 +28,6 @@ const Interview = () => {
     const [isAnswerValid, setIsAnswerValid] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [question, setQuestion] = useState<string>("");
-    const [answer, setAnswer] = useState<string>("");
     const [feedback, setFeedback] = useState<boolean>(false);
     const [provideFeedback, setProvideFeedback] = useState<string>("");
   const [isListening, setIsListening] = useState<boolean>(false); // Added state for listening toggle
@@ -48,13 +41,12 @@ const Interview = () => {
     return null;
     }
 
-    // const questionsArray: string[] = ques.split("\n");
 const questionsArray: string[] = question.split("\n");
 
     useEffect(() => {
       getQues();
     }, []);
-  ///=================================
+
     useEffect(() => {
     // Update isAnswerValid state when the input value changes
     setIsAnswerValid(
@@ -66,30 +58,16 @@ const questionsArray: string[] = question.split("\n");
     useEffect(() => {
     if (isListening) {
         SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
-    } else if (!isListening && transcript.trim() !== "") {
-      setAnswer(transcript); // Update the answer when listening stops and transcript is not empty
-    }
-    // {
-    //     resetTranscript();
-    // }
+    } 
     }, [isListening, transcript]);
 
-  // useEffect(() => {
-  //     if (isListening) {
-  //         SpeechRecognition.startListening({ continuous: true, language: "en-IN" })
-  //     }
-  //     else if (!isListening && transcript.trim() !== "") {
-  //         setAnswer(transcript); // Update the answer when listening stops and transcript is not empty
-  //     }
-  // }, [isListening,transcript]);
 
     const getQues = () => {
     setLoading(true);
     axios
         .get<string>(`http://localhost:8080/mind/${track}`)
-        .then((res) => {
+        .then((res:any) => {
         const response: string = res.data;
-        // console.log(response);
         setLoading(false);
         setQuestion(response);
         })
@@ -101,13 +79,10 @@ const questionsArray: string[] = question.split("\n");
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setState({ ...state, inputValue: e.target.value });
     };
-  // console.log(state.inputValue)
 
     const toggleListening = () => {
     if (isListening) {
         SpeechRecognition.stopListening();
-      
-        // setAnswer(transcript);
     } else {
         resetTranscript();
     }
@@ -164,7 +139,6 @@ const questionsArray: string[] = question.split("\n");
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -203,14 +177,12 @@ const questionsArray: string[] = question.split("\n");
                 )}
         </div>
             ) : (
-        // )
         <div className="bg-[#608fe6] text-start p-6 w-[90%] md:w-[70%] mx-auto rounded-xl shadow-md space-x-4">
                 <div className="h-[100%]">
             <h2 className="text-white text-sm font-bold md:text-lg">
                     Question {questionsArray[state.questionIndex]}
             </h2>
             <div className="flex items-center md:flex-row mt-[-10px] flex-col h-[80%]">
-                 
                 <textarea
                 className="rounded-lg py-4 w-[90%] h-32 px-3 mt-4 mr-2 text-start"
                 value={transcript ? state.inputValue + transcript : state.inputValue}
@@ -222,7 +194,7 @@ const questionsArray: string[] = question.split("\n");
               />
             <div className="mt-0 flex flex-row md:flex-col rounded-md">
               <div
-                className="bg-[#d52626] w-[65px] mr-3 md:py-3 md:ml-1 text-white py-2 px-4 rounded-md  mx-auto my-6 hover:bg-[#ec1206] flex items-center mr-4 justify-center"
+                className="bg-[#d52626] w-[65px] mr-3 md:py-3 md:ml-1 text-white py-2 px-4 rounded-md  mx-auto my-6 hover:bg-[#ec1206] flex items-center justify-center"
                 onClick={toggleListening}
               >
                         {isListening ? <FiMicOff /> : <FiMic />}
