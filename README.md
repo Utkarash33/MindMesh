@@ -16,8 +16,12 @@ MindMesh is an interview preparation tool that provides AI feedback on your mock
 - HTML
 - Tailwind CSS
 
-![homepage](https://github.com/Utkarash33/MindMesh/assets/41429552/00cd0081-9115-4281-9958-fb0c7882832b)
-![roleselection](https://github.com/Utkarash33/MindMesh/assets/41429552/311d8497-ea72-4fa1-9436-204b0f3fc8c9)
+##Screenshots
+![homepage](https://github.com/Utkarash33/MindMesh/assets/41429552/a1cde6d3-dbc7-4b3f-9b5e-631dcda5a4ca)
+![roleselection](https://github.com/Utkarash33/MindMesh/assets/41429552/9999fccb-cfb7-4987-9825-aa6560837412)
+![question](https://github.com/Utkarash33/MindMesh/assets/41429552/8e288148-3fb6-49f3-8c6b-530e68d6a41b)
+![feedback](https://github.com/Utkarash33/MindMesh/assets/41429552/5a29245c-6c71-41ba-a65e-b88539d082f9)
+
 
 ## Authors
 
