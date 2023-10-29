@@ -34,3 +34,4 @@ MindMesh is an interview preparation tool that provides AI feedback on your mock
 - [@Biswajit2595](https://github.com/Biswajit2595)
 - [@sudharshan2151](https://github.com/sudharshan2151)
 - [@kishanjalan11](https://github.com/kishanjalan11)
+- [@chandanSingh0](https://github.com/chandanSingh0) 
